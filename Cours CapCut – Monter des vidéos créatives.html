@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cours CapCut – Monter des vidéos créatives</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap">
+<style>
+:root{
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f3f5f7;--panel:#ffffff;--ink:#14161a;--muted:#555d68;--line:#d5dae0;
+  --c1:#0aa89b;--c2:#e0306f;--c3:#c9951a;--on:#fff;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14161a;--panel:#1d2026;--ink:#eef1f4;--muted:#a3abb5;--line:#323842;
+  --c1:#3ad1c4;--c2:#ff5c93;--c3:#ffd24a;--on:#14161a;color-scheme:dark;}}
+:root[data-theme="dark"]{--bg:#14161a;--panel:#1d2026;--ink:#eef1f4;--muted:#a3abb5;--line:#323842;--c1:#3ad1c4;--c2:#ff5c93;--c3:#ffd24a;--on:#14161a;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.65 "Bricolage Grotesque",system-ui,Arial,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+.brand{font-weight:800;padding:14px 0 8px;font-size:1.1rem}
+nav.tracks{display:flex;gap:8px;overflow-x:auto;padding-bottom:12px}
+nav.tracks a{flex:0 0 auto;text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-left:6px solid var(--k);padding:8px 14px;border-radius:6px;font-weight:600;font-size:.95rem}
+nav.tracks a[aria-current="page"]{background:var(--k);color:var(--on);border-color:var(--k)}
+nav.tracks a:focus-visible,.btn:focus-visible{outline:3px solid var(--c3);outline-offset:2px}
+h1{font-size:clamp(2rem,6vw,3.2rem);line-height:1.08;font-weight:800;margin:36px 0 12px;letter-spacing:-.02em}
+h2{font-size:1.5rem;margin:40px 0 12px;font-weight:800}
+p{max-width:68ch}
+.goal{background:var(--panel);border:1px solid var(--line);border-left:6px solid var(--c1);padding:16px 20px;border-radius:6px;max-width:68ch}
+.strip{display:flex;gap:4px;margin:28px 0 8px;height:44px}
+.strip span{border-radius:5px;background:var(--c1)}
+.strip span:nth-child(2){background:var(--c2)}.strip span:nth-child(3){background:var(--c3)}.strip span:nth-child(4){background:var(--c1)}.strip span:nth-child(5){background:var(--c2)}
+.strip.s2{height:20px;opacity:.6;margin-top:0}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:12px}
+ol.steps li{counter-increment:s;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 18px 14px 64px;position:relative;max-width:68ch}
+ol.steps li::before{content:counter(s);position:absolute;left:16px;top:12px;width:32px;height:32px;border-radius:50%;background:var(--c2);color:var(--on);display:grid;place-items:center;font-weight:800}
+.btn{display:inline-block;margin-top:6px;background:var(--c1);color:var(--on);padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:600}
+.soon{border:2px dashed var(--line);border-radius:8px;padding:20px;max-width:68ch;color:var(--muted)}
+.soon ul{margin:8px 0 0;padding-left:20px}
+ul.list{max-width:68ch;padding-left:20px}ul.list li{margin:6px 0}
+.tip{background:var(--panel);border:1px solid var(--line);border-left:6px solid var(--c3);padding:14px 18px;border-radius:6px;max-width:68ch;margin-top:20px}
+.video{display:flex;gap:18px;align-items:center;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;margin-top:28px;max-width:68ch}
+.video .screen{flex:0 0 160px;height:90px;border-radius:6px;background:linear-gradient(90deg,var(--c1) 0 33%,var(--c2) 33% 66%,var(--c3) 66%);display:grid;place-items:center;font-size:2rem;color:var(--on)}
+.video .info{flex:1 1 220px}.video .info p{margin:4px 0 10px}
+.btn.alt{background:var(--panel);color:var(--ink);border:1px solid var(--line);margin-left:6px}
+section.module{display:none}
+section.module.on{display:block}
+footer{margin-top:64px;border-top:1px solid var(--line);padding:22px 0 32px;text-align:center;color:var(--muted)}
+footer strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <div class="brand">Cours de montage vidéo</div>
+  <nav class="tracks" aria-label="Modules">
+    <a href="#module1" data-m="module1" style="--k:var(--c1)">Module 1 · CapCut</a>
+    <a href="#module2" data-m="module2" style="--k:var(--c2)">Module 2 · Effets et texte</a>
+    <a href="#module3" data-m="module3" style="--k:var(--c3)">Module 3 · Son et rythme</a>
+    <a href="#module4" data-m="module4" style="--k:var(--c1)">Module 4 · Projet final</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+<section class="module" id="module1">
+  <h1>CapCut : monter des vidéos créatives</h1>
+  <div class="strip" aria-hidden="true"><span style="flex:3"></span><span style="flex:2"></span><span style="flex:4"></span><span style="flex:2"></span><span style="flex:3"></span></div>
+  <div class="strip s2" aria-hidden="true"><span style="flex:5"></span><span style="flex:3"></span><span style="flex:6"></span></div>
+  <h2>Objectif du cours</h2>
+  <p class="goal">Apprendre à créer et à monter des vidéos pour des projets scolaires ou artistiques.</p>
+  <h2>Introduction</h2>
+  <p>CapCut est une application gratuite qui permet de monter facilement des vidéos, d’ajouter du texte, des effets et de la musique. C’est un excellent moyen de présenter un projet de manière originale et professionnelle.</p>
+  <h2>Méthode d’utilisation</h2>
+  <ol class="steps">
+    <li><strong>Télécharge CapCut.</strong><br><a class="btn" href="https://www.capcut.com" target="_blank" rel="noopener">Lien CapCut</a></li>
+    <li><strong>Crée un projet</strong> en important tes vidéos ou photos.</li>
+    <li><strong>Coupe les parties inutiles</strong>, ajoute du texte, des transitions et des effets visuels.</li>
+    <li><strong>Ajoute de la musique ou des sons</strong> pour enrichir ton montage.</li>
+    <li><strong>Exporte la vidéo</strong> une fois satisfait, pour la partager ou la publier.</li>
+  </ol>
+  <div class="video"><div class="screen" aria-hidden="true">▶</div><div class="info"><strong>Vidéos d’exemple : prise en main</strong><p>Regarde un tutoriel complet pour voir l’importation, la coupe et l’export en direct.</p><a class="btn" href="https://www.youtube.com/results?search_query=capcut+tutoriel+d%C3%A9butant" target="_blank" rel="noopener">Voir sur YouTube</a><a class="btn alt" href="https://www.capcut.com/fr-fr/resource/capcut-tutorial-for-beginners" target="_blank" rel="noopener">Guide officiel CapCut</a></div></div>
+</section>
+
+<section class="module" id="module2">
+  <h1>Module 2 : transitions, effets et texte</h1>
+  <div class="strip" aria-hidden="true"><span style="flex:2"></span><span style="flex:3"></span><span style="flex:2"></span><span style="flex:4"></span><span style="flex:2"></span></div>
+  <h2>Objectif du module</h2>
+  <p class="goal">Donner du style à ton montage : relier les clips avec des transitions, ajouter des effets et écrire du texte lisible.</p>
+  <h2>Les étapes</h2>
+  <ol class="steps">
+    <li><strong>Ajoute une transition.</strong> Sur la timeline, touche le petit carré entre deux clips, puis choisis une transition (fondu, glissement, zoom). Règle sa durée.</li>
+    <li><strong>Applique un effet visuel.</strong> Sélectionne un clip, ouvre « Effets » et choisis un effet (flou, vieille caméra, lumière). Tu peux le placer sur une partie précise du clip.</li>
+    <li><strong>Ajoute du texte.</strong> Touche « Texte » puis « Ajouter du texte ». Choisis la police, la couleur, la taille et une animation d’entrée et de sortie.</li>
+    <li><strong>Génère des sous-titres.</strong> Dans « Texte », choisis « Sous-titres automatiques » : CapCut écrit ce qui est dit dans la vidéo. Relis et corrige les erreurs.</li>
+    <li><strong>Superpose une image ou une vidéo.</strong> Utilise « Incrustation » pour ajouter un logo, une photo ou une deuxième vidéo par-dessus la première.</li>
+  </ol>
+  <div class="tip"><strong>Conseil :</strong> garde la même transition et la même police dans toute la vidéo. Trop d’effets fatiguent le spectateur. Les noms des menus peuvent changer selon la version de CapCut.</div>
+  <div class="video"><div class="screen" aria-hidden="true">▶</div><div class="info"><strong>Vidéos d’exemple : transitions, effets et texte</strong><p>Observe comment les transitions et les textes animés sont placés sur la timeline.</p><a class="btn" href="https://www.youtube.com/results?search_query=capcut+transitions+effets+texte+tutoriel" target="_blank" rel="noopener">Voir sur YouTube</a></div></div>
+</section>
+
+<section class="module" id="module3">
+  <h1>Module 3 : son, vitesse et couleurs</h1>
+  <div class="strip" aria-hidden="true"><span style="flex:4"></span><span style="flex:2"></span><span style="flex:3"></span><span style="flex:2"></span><span style="flex:4"></span></div>
+  <h2>Objectif du module</h2>
+  <p class="goal">Rendre ta vidéo vivante : choisir le bon son, régler le rythme des images et harmoniser les couleurs.</p>
+  <h2>Le son</h2>
+  <ol class="steps">
+    <li><strong>Ajoute une musique.</strong> Touche « Audio » puis « Sons » et choisis un titre. Vérifie qu’il est libre de droits si tu publies ta vidéo.</li>
+    <li><strong>Enregistre une voix off.</strong> Dans « Audio », choisis « Enregistrer » et parle dans un endroit calme, près du micro.</li>
+    <li><strong>Ajoute des effets sonores</strong> (clic, applaudissements, whoosh) pour souligner une action ou une transition.</li>
+    <li><strong>Règle le volume.</strong> Baisse la musique quand quelqu’un parle, et utilise « Fondu » pour qu’elle commence et se termine en douceur.</li>
+  </ol>
+  <h2>Le rythme et l’image</h2>
+  <ul class="list">
+    <li><strong>Vitesse :</strong> accélère un passage long ou ralentis un moment important avec l’outil « Vitesse ».</li>
+    <li><strong>Couleurs :</strong> dans « Ajuster », modifie la luminosité, le contraste et la saturation, ou applique un filtre.</li>
+    <li><strong>Cohérence :</strong> applique le même filtre à tous les clips pour un rendu uniforme.</li>
+    <li><strong>Synchronisation :</strong> coupe les images au rythme de la musique pour un montage plus dynamique.</li>
+  </ul>
+  <div class="video"><div class="screen" aria-hidden="true">▶</div><div class="info"><strong>Vidéos d’exemple : son, musique et voix off</strong><p>Écoute comment le volume de la musique baisse pendant la voix off.</p><a class="btn" href="https://www.youtube.com/results?search_query=capcut+musique+voix+off+tutoriel" target="_blank" rel="noopener">Voir sur YouTube</a></div></div>
+</section>
+
+<section class="module" id="module4">
+  <h1>Module 4 : projet final</h1>
+  <div class="strip" aria-hidden="true"><span style="flex:3"></span><span style="flex:3"></span><span style="flex:2"></span><span style="flex:3"></span><span style="flex:3"></span></div>
+  <h2>Objectif du module</h2>
+  <p class="goal">Réaliser une vidéo complète de 1 à 3 minutes pour présenter un projet scolaire ou artistique, de l’idée à la publication.</p>
+  <h2>Les étapes du projet</h2>
+  <ol class="steps">
+    <li><strong>Prépare ton idée.</strong> Écris le sujet, le message et un plan simple : introduction, développement, conclusion.</li>
+    <li><strong>Rassemble tes images.</strong> Filme ou photographie, en tenant ton téléphone à l’horizontale avec une bonne lumière. Rassemble aussi les sons et les textes.</li>
+    <li><strong>Monte la vidéo.</strong> Importe tout dans CapCut, coupe, organise, puis ajoute textes, transitions, effets et musique (modules 1 à 3).</li>
+    <li><strong>Vérifie le résultat.</strong> Regarde la vidéo en entier avec le son. Corrige les fautes, les coupures brusques et les volumes trop forts.</li>
+    <li><strong>Exporte et partage.</strong> Choisis 1080p et 30 images par seconde, puis touche « Exporter ». Partage la vidéo à ton enseignant ou publie-la.</li>
+  </ol>
+  <h2>Liste de contrôle</h2>
+  <ul class="list">
+    <li>Le sujet est clair dès les premières secondes.</li>
+    <li>Les textes sont lisibles et sans fautes.</li>
+    <li>La musique ne couvre pas la voix.</li>
+    <li>Les images sont nettes et les transitions cohérentes.</li>
+    <li>Tu as les droits d’utilisation de la musique et des images.</li>
+  </ul>
+  <div class="video"><div class="screen" aria-hidden="true">▶</div><div class="info"><strong>Vidéos d’exemple : montage complet et export</strong><p>Suis un montage du début à la fin et compare avec ton propre projet.</p><a class="btn" href="https://www.youtube.com/results?search_query=capcut+exporter+vid%C3%A9o+tutoriel" target="_blank" rel="noopener">Voir sur YouTube</a></div></div>
+</section>
+</main>
+
+<footer><div class="wrap">Créé par <strong>Wadley PIERRE</strong></div></footer>
+
+<script>
+(function(){
+  var ids=["module1","module2","module3","module4"];
+  function show(){
+    var h=(location.hash||"").replace("#","");
+    if(ids.indexOf(h)<0)h="module1";
+    ids.forEach(function(id){
+      document.getElementById(id).classList.toggle("on",id===h);
+    });
+    document.querySelectorAll("nav.tracks a").forEach(function(a){
+      if(a.dataset.m===h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
+    });
+    window.scrollTo(0,0);
+  }
+  window.addEventListener("hashchange",show);
+  show();
+})();
+</script>
+</body>
+</html>
